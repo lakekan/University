@@ -19,13 +19,10 @@ class University
         {
             people[person.Id] = person;
             Console.WriteLine($"{person.Name} added successfully.");
-            if(person is Student student)
+            if(person is Student student && student.Graduate())
             {
-                if (student.Graduate())
-                {
                     people.Remove(person.Id);
                     Console.WriteLine($"{person.Name} have graduated and was removed.");
-                }
             }
         }
         else
