@@ -11,9 +11,9 @@ class Program
 
     static void Main()
     {
-        bool flag = true;
+        bool loop = true;
         //Running an endless loop 
-        while (flag)
+        while (loop)
         {
             Console.WriteLine("\nUniversity Management System");
             Console.WriteLine("1. Add a Student");
@@ -36,7 +36,7 @@ class Program
                     case 3: EnrollStudentInCourse(); break;
                     case 4: AssignSubjectToProfessor(); break;
                     case 5: university.DisplayAllPeople(); break;
-                    case 6: { Console.WriteLine("Have a good day!");flag = false; break; }
+                    case 6: { Console.WriteLine("Have a good day!");loop= false; break; }
                     default: Console.WriteLine("Invalid choice. The number must between 1-6 ! "); break;                  
                 }
             }
@@ -54,17 +54,13 @@ class Program
                 Console.Write("Enter ID: ");
                 string id = Console.ReadLine()!;
             if (string.IsNullOrWhiteSpace(id) || id.Contains(" "))
-            {
-                Console.WriteLine("Invalid ID! ID cannot be empty or contain spaces.");
-                return;
-            }
+                throw new IdSetupException();
+            
             Console.Write("Enter Name: ");
                 string name = Console.ReadLine()!;
             if (string.IsNullOrWhiteSpace(name))
-            {
-                Console.WriteLine("Invalid Name! Name cannot be empty.");
-                return;
-            }
+                throw new NameSetupException();
+
             Console.Write("Enter Age: ");
                 int age = Convert.ToInt32(Console.ReadLine()!);
                 Console.Write("Enter GPA: ");
@@ -79,17 +75,13 @@ class Program
             Console.Write("Enter ID: ");
             string id = Console.ReadLine()!;
             if (string.IsNullOrWhiteSpace(id) || id.Contains(" "))
-            {
-                Console.WriteLine("Invalid ID! ID cannot be empty or contain spaces.");
-                return;
-            }
+                throw new IdSetupException();
+
             Console.Write("Enter Name: ");
             string name = Console.ReadLine()!;
             if (string.IsNullOrWhiteSpace(name))
-            {
-                Console.WriteLine("Invalid Name! Name cannot be empty.");
-                return;
-            }
+                throw new NameSetupException();
+            
             Console.Write("Enter Age: ");
             int age = Convert.ToInt32(Console.ReadLine()!);
             Console.Write("Enter Salary: ");
@@ -104,18 +96,13 @@ class Program
             Console.Write("Enter Student ID: ");
             string id = Console.ReadLine()!;
             if (string.IsNullOrWhiteSpace(id) || id.Contains(" "))
-            {
-                Console.WriteLine("Invalid ID! ID cannot be empty or contain spaces.");
-                return;
-            }
+                throw new IdSetupException();
+
 
             Console.Write("Enter Course Name: ");
             string course = Console.ReadLine()!;
             if (string.IsNullOrWhiteSpace(course))
-            {
-                Console.WriteLine("Invalid Course Name! Name cannot be empty.");
-                return;
-            }
+                throw new CourseNameException();
 
             Student? student = university.FindPerson(id) as Student;
             if (student != null)
@@ -130,17 +117,12 @@ class Program
             Console.Write("Enter Professor ID: ");
             string id = Console.ReadLine()!;
             if (string.IsNullOrWhiteSpace(id) || id.Contains(" "))
-            {
-                Console.WriteLine("Invalid ID! ID cannot be empty or contain spaces.");
-                return;
-            }
+                throw new IdSetupException();
+
             Console.Write("Enter Subject Name: ");
             string subject = Console.ReadLine()!;
             if (string.IsNullOrWhiteSpace(subject))
-            {
-                Console.WriteLine("Invalid Subject Name! Name cannot be empty.");
-                return;
-            }
+                throw new SubjectNameException();
 
             Professor? professor = university.FindPerson(id) as Professor;
             if (professor != null)

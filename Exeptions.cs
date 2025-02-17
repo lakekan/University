@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace University
 {
     //Creating costume Exceptions
 
-    internal class AgeException: Exception
+    internal class AgeException : Exception
     {
-        public AgeException()  : base("The age must be between 0 to 150!") {}
-        
+        public AgeException() : base("The age must be between 0 to 150!") { }
+
     }
 
     internal class GPAException : Exception
@@ -33,4 +35,27 @@ namespace University
     {
         public SalaryException() : base("Salary must be between 0 to 60,000$") { }
     }
+
+    internal class IdSetupException : Exception
+    {
+        public IdSetupException() : base("Invalid ID! ID cannot be empty or contain spaces.") { }
+    }
+
+
+    internal class NameSetupException : Exception
+    {
+        public NameSetupException() : base("Invalid Name! Name cannot be empty.") { }
+    }
+
+    internal class CourseNameException : Exception
+    {
+        public CourseNameException() : base("Invalid Course Name! Name cannot be empty.") { }
+    }
+
+    internal class SubjectNameException : Exception
+    {
+        public SubjectNameException() : base("Invalid Subject Name! Name cannot be empty.") { }
+    }
+
 }
+    
