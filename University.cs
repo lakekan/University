@@ -40,10 +40,7 @@ class University
     public void DisplayAllPeople()
     {
         if (universityMembersDict.Count == 0)
-        {
-            Console.WriteLine("No people in the university.");
-            return;
-        }
+        throw new NoPeopleException();
 
         foreach (Person person in universityMembersDict.Values)
            person.GetInfo();

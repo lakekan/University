@@ -57,5 +57,10 @@ namespace University
         public SubjectNameException() : base("Invalid Subject Name! Name cannot be empty.") { }
     }
 
+    internal class NoPeopleException : Exception
+    {
+        public NoPeopleException() : base("No people in the university.") { }
+    }
+
 }
     
